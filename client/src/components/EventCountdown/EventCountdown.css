@@ -1,0 +1,217 @@
+.event-countdown {
+  background: linear-gradient(135deg, var(--event-color, #667eea) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-countdown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.event-countdown.urgent {
+  animation: urgentPulse 1s infinite alternate;
+}
+
+@keyframes urgentPulse {
+  from {
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.6);
+  }
+}
+
+.event-countdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.event-countdown-icon {
+  font-size: 24px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.event-countdown-info {
+  flex: 1;
+}
+
+.event-countdown-title {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.event-countdown-multiplier {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.event-countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.countdown-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+}
+
+.countdown-number {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 10px;
+  opacity: 0.8;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.countdown-separator {
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0.7;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 0.7;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.event-countdown-progress {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+  border-radius: 2px;
+  transition: width 1s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .event-countdown {
+    padding: 12px;
+    margin: 8px 0;
+  }
+  
+  .event-countdown-title {
+    font-size: 14px;
+  }
+  
+  .countdown-number {
+    font-size: 20px;
+  }
+  
+  .countdown-segment {
+    min-width: 35px;
+  }
+  
+  .event-countdown-timer {
+    gap: 6px;
+  }
+}
+
+/* Compact variant for smaller spaces */
+.event-countdown.compact {
+  padding: 8px 12px;
+  margin: 6px 0;
+}
+
+.event-countdown.compact .event-countdown-header {
+  margin-bottom: 8px;
+}
+
+.event-countdown.compact .event-countdown-title {
+  font-size: 14px;
+}
+
+.event-countdown.compact .countdown-number {
+  font-size: 18px;
+}
+
+.event-countdown.compact .countdown-segment {
+  min-width: 30px;
+}
+
+/* Different event type styles */
+.event-countdown[style*="--event-color: #f093fb"] {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.event-countdown[style*="--event-color: #4facfe"] {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.event-countdown[style*="--event-color: #43e97b"] {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}

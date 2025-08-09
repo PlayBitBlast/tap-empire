@@ -1,0 +1,333 @@
+/* Global Styles for Tap Empire */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--tg-theme-bg-color, #17212b);
+  color: var(--tg-theme-text-color, #ffffff);
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Telegram Web App Theme Variables */
+:root {
+  --tg-theme-bg-color: #17212b;
+  --tg-theme-text-color: #ffffff;
+  --tg-theme-hint-color: #708499;
+  --tg-theme-link-color: #6ab7ff;
+  --tg-theme-button-color: #5288c1;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #232e3c;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Disable text selection and context menu for game elements */
+.game-element {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Button reset */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Enhanced Responsive Design Utilities */
+
+/* Responsive breakpoint classes */
+.breakpoint-xs { font-size: 14px; }
+.breakpoint-sm { font-size: 15px; }
+.breakpoint-md { font-size: 16px; }
+.breakpoint-lg { font-size: 17px; }
+.breakpoint-xl { font-size: 18px; }
+
+/* Device-specific optimizations */
+.mobile {
+  /* Mobile-specific styles */
+  --touch-target-size: 44px;
+  --spacing-unit: 12px;
+}
+
+.tablet {
+  /* Tablet-specific styles */
+  --touch-target-size: 40px;
+  --spacing-unit: 16px;
+}
+
+.desktop {
+  /* Desktop-specific styles */
+  --touch-target-size: 32px;
+  --spacing-unit: 20px;
+}
+
+.touch-device {
+  /* Touch device optimizations */
+  cursor: default;
+}
+
+.touch-device button,
+.touch-device [role="button"] {
+  min-width: var(--touch-target-size, 44px);
+  min-height: var(--touch-target-size, 44px);
+  cursor: pointer;
+}
+
+.no-touch button:hover,
+.no-touch [role="button"]:hover {
+  /* Hover effects only for non-touch devices */
+  opacity: 0.9;
+}
+
+/* Orientation-specific styles */
+.landscape {
+  /* Landscape optimizations */
+  --header-height: 60px;
+}
+
+.portrait {
+  /* Portrait optimizations */
+  --header-height: 80px;
+}
+
+/* Keyboard visibility adjustments */
+.keyboard-visible {
+  /* Adjust layout when virtual keyboard is visible */
+  --bottom-padding: 0px;
+}
+
+/* Performance optimizations */
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.low-end-device {
+  /* Optimizations for low-end devices */
+  --animation-duration: 150ms;
+  --transition-duration: 100ms;
+}
+
+.low-end-device *,
+.low-end-device *::before,
+.low-end-device *::after {
+  animation-duration: var(--animation-duration) !important;
+  transition-duration: var(--transition-duration) !important;
+}
+
+/* Safe area support */
+.has-notch {
+  /* Additional padding for devices with notches */
+  --safe-area-top: env(safe-area-inset-top, 20px);
+}
+
+/* Responsive spacing utilities */
+.spacing-xs { gap: calc(var(--spacing-unit, 16px) * 0.5); }
+.spacing-sm { gap: calc(var(--spacing-unit, 16px) * 0.75); }
+.spacing-md { gap: var(--spacing-unit, 16px); }
+.spacing-lg { gap: calc(var(--spacing-unit, 16px) * 1.5); }
+.spacing-xl { gap: calc(var(--spacing-unit, 16px) * 2); }
+
+/* Responsive text utilities */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+
+/* Responsive visibility utilities */
+.hidden-xs { display: none; }
+.hidden-sm { display: none; }
+.hidden-md { display: none; }
+.hidden-lg { display: none; }
+.hidden-xl { display: none; }
+
+@media (min-width: 481px) {
+  .hidden-xs { display: initial; }
+  .show-xs-only { display: none; }
+}
+
+@media (min-width: 769px) {
+  .hidden-sm { display: initial; }
+  .show-sm-only { display: none; }
+}
+
+@media (min-width: 1025px) {
+  .hidden-md { display: initial; }
+  .show-md-only { display: none; }
+}
+
+@media (min-width: 1201px) {
+  .hidden-lg { display: initial; }
+  .show-lg-only { display: none; }
+}
+
+/* Container utilities */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit, 16px);
+}
+
+.container-xs { max-width: 480px; }
+.container-sm { max-width: 768px; }
+.container-md { max-width: 1024px; }
+.container-lg { max-width: 1200px; }
+.container-xl { max-width: 1400px; }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+
+/* Grid utilities */
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Responsive grid */
+@media (max-width: 480px) {
+  .grid-cols-responsive { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid-cols-responsive { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 769px) {
+  .grid-cols-responsive { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Accessibility improvements */
+@media (prefers-contrast: high) {
+  :root {
+    --tg-theme-bg-color: #000000;
+    --tg-theme-text-color: #ffffff;
+    --tg-theme-button-color: #ffffff;
+    --tg-theme-button-text-color: #000000;
+  }
+}
+
+/* Focus management */
+.focus-trap {
+  /* Ensure focus stays within modal/dialog */
+  position: relative;
+}
+
+.focus-trap:focus-within {
+  outline: 2px solid var(--tg-theme-link-color, #6ab7ff);
+  outline-offset: 2px;
+}
+
+/* Screen reader utilities */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Print optimizations */
+@media print {
+  .no-print { display: none !important; }
+  
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+}
+
+/* High refresh rate optimizations */
+@media (min-resolution: 120dpi) {
+  * {
+    /* Smoother animations on high refresh rate displays */
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Battery saving mode */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

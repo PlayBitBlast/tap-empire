@@ -1,0 +1,62 @@
+# Production Dockerfile for Tap Empire Server
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY server/package*.json ./
+
+# Install all dependencies (including dev dependencies for building)
+RUN npm ci
+
+# Copy source code
+COPY server/ ./
+COPY shared/ ../shared/
+
+# Run any build steps if needed
+RUN npm run build 2>/dev/null || echo "No build step defined"
+
+# Production stage
+FROM node:18-alpine AS production
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY server/package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy built application from builder stage
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/scripts ./scripts
+COPY --from=builder /app/../shared ../shared
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S tapempire -u 1001 -G nodejs
+
+# Create necessary directories and set permissions
+RUN mkdir -p /app/logs && \
+    chown -R tapempire:nodejs /app
+
+# Switch to non-root user
+USER tapempire
+
+# Expose port
+EXPOSE 3001
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })" || exit 1
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["dumb-init", "--"]
+
+# Start the application
+CMD ["node", "src/app.js"]

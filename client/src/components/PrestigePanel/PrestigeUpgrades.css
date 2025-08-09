@@ -1,0 +1,364 @@
+/* PrestigeUpgrades.css - Styles for prestige upgrades component */
+
+.prestige-upgrades {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prestige-upgrades.loading,
+.prestige-upgrades.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.loading-message {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
+.empty-message h3 {
+  color: #ffd700;
+  margin: 0 0 12px 0;
+}
+
+.empty-message p {
+  color: #b0b0b0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Header */
+.upgrades-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.upgrades-header h3 {
+  margin: 0;
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.upgrades-header .points-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.points-icon {
+  font-size: 16px;
+}
+
+.points-value {
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.points-label {
+  font-size: 12px;
+  color: #b0b0b0;
+}
+
+/* Upgrades List */
+.upgrades-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.upgrade-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.upgrade-item.affordable {
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.upgrade-item.expensive {
+  border-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.7;
+}
+
+.upgrade-item.max-level {
+  border-color: rgba(0, 255, 0, 0.3);
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.upgrade-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Upgrade Header */
+.upgrade-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.upgrade-info h4 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.upgrade-description {
+  margin: 0;
+  color: #b0b0b0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.upgrade-level {
+  text-align: right;
+}
+
+.level-text {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #d0d0d0;
+  font-weight: 600;
+}
+
+/* Upgrade Stats */
+.upgrade-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.stat-label {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.stat-increase {
+  color: #4ade80;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* Upgrade Footer */
+.upgrade-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.max-level-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #4ade80;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.badge-icon {
+  font-size: 16px;
+}
+
+.upgrade-purchase {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.upgrade-cost {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.cost-icon {
+  font-size: 16px;
+}
+
+.purchase-button {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1a1a2e;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.purchase-button.enabled:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.purchase-button.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: #666666;
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-loading .loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(26, 26, 46, 0.3);
+  border-left: 2px solid #1a1a2e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.button-icon {
+  font-size: 14px;
+}
+
+.button-text {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Progress Bar */
+.upgrade-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.upgrade-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  transition: width 0.3s ease;
+}
+
+/* Info Section */
+.upgrades-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item h4 {
+  margin: 0 0 8px 0;
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.info-item p {
+  margin: 0;
+  color: #b0b0b0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upgrades-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .upgrade-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .upgrade-level {
+    text-align: left;
+  }
+  
+  .upgrade-purchase {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .purchase-button {
+    width: 100%;
+  }
+  
+  .upgrades-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

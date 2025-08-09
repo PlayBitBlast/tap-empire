@@ -1,0 +1,383 @@
+/* PrestigeProgress.css - Styles for prestige progress component */
+
+.prestige-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.prestige-progress.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-message {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
+/* Header */
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.progress-header h3 {
+  margin: 0;
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.current-level {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Progress Bar Container */
+.progress-bar-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #b0b0b0;
+}
+
+.progress-bar {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  height: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.5s ease;
+  position: relative;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+}
+
+.progress-fill.complete {
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.progress-fill.incomplete {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.progress-current {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.current-coins {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Progress Details */
+.progress-details {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.detail-value {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.detail-value.needed {
+  color: #f87171;
+}
+
+.detail-value.potential {
+  color: #4ade80;
+}
+
+/* Progress Status */
+.progress-status {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-ready,
+.status-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-ready {
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.status-progress {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.status-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.status-text {
+  flex: 1;
+}
+
+.status-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.status-subtitle {
+  color: #b0b0b0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.status-ready .status-title {
+  color: #4ade80;
+}
+
+.status-ready .status-subtitle {
+  color: #86efac;
+}
+
+/* Current Game Stats */
+.current-game-stats {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.current-game-stats h4 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.game-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.game-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-stat .stat-icon {
+  font-size: 20px;
+}
+
+.game-stat .stat-value {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.game-stat .stat-label {
+  color: #b0b0b0;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Progress Explanation */
+.progress-explanation {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.progress-explanation h4 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.explanation-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-number {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #1a1a2e;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.step-description {
+  color: #b0b0b0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .prestige-progress {
+    padding: 16px;
+  }
+  
+  .progress-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .progress-bar {
+    height: 28px;
+  }
+  
+  .progress-text {
+    font-size: 12px;
+  }
+  
+  .status-ready,
+  .status-progress {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .status-icon {
+    font-size: 28px;
+  }
+  
+  .game-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .explanation-steps {
+    gap: 12px;
+  }
+  
+  .step {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .step-number {
+    align-self: center;
+  }
+}

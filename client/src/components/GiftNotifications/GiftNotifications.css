@@ -1,0 +1,269 @@
+.gift-notifications {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gift-notifications-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gift-notifications-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gift-notifications-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.gifts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.gift-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.gift-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gift-item.expiring-soon {
+  border-color: #FFA500;
+  background: rgba(255, 165, 0, 0.1);
+  animation: pulse-warning 2s infinite;
+}
+
+.gift-item.expired {
+  opacity: 0.6;
+  background: rgba(128, 128, 128, 0.1);
+  border-color: rgba(128, 128, 128, 0.3);
+}
+
+@keyframes pulse-warning {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px rgba(255, 165, 0, 0);
+  }
+}
+
+.gift-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.gift-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gift-sender {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.gift-sender strong {
+  color: white;
+  font-weight: bold;
+}
+
+.gift-amount {
+  color: #FFD700;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.gift-message {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.gift-expiry {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gift-expiry.warning {
+  color: #FFA500;
+  font-weight: bold;
+}
+
+.gift-expiry.expired {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+.gift-actions {
+  flex-shrink: 0;
+}
+
+.claim-btn {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 80px;
+  justify-content: center;
+}
+
+.claim-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.claim-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.claiming-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.expired-label {
+  background: rgba(128, 128, 128, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.gifts-summary {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.gifts-summary p {
+  margin: 4px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.gifts-summary p:first-child {
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.expiry-warning {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.8rem !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .gift-notifications {
+    padding: 15px;
+  }
+
+  .gift-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .gift-icon {
+    font-size: 1.5rem;
+  }
+
+  .gift-details {
+    gap: 3px;
+  }
+
+  .gift-sender,
+  .gift-amount {
+    font-size: 0.85rem;
+  }
+
+  .gift-message {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .gift-expiry {
+    font-size: 0.75rem;
+  }
+
+  .claim-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gift-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .gift-actions {
+    width: 100%;
+  }
+
+  .claim-btn,
+  .expired-label {
+    width: 100%;
+  }
+
+  .gifts-summary p {
+    font-size: 0.8rem;
+  }
+}

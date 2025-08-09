@@ -1,0 +1,235 @@
+.active-events {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  margin: 16px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.active-events.expanded {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.active-events-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: white;
+}
+
+.active-events-header:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.events-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.events-icon {
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+.events-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.total-multiplier {
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.expand-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.expand-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.active-events-content {
+  padding: 0 20px 20px 20px;
+  color: white;
+}
+
+.multiplier-events,
+.upgrade-events {
+  margin-bottom: 24px;
+}
+
+.multiplier-events h4,
+.upgrade-events h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upgrade-event {
+  margin-bottom: 16px;
+}
+
+.upgrade-event:last-child {
+  margin-bottom: 0;
+}
+
+.event-tips {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event-tips h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.event-tips ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style-type: none;
+}
+
+.event-tips li {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  position: relative;
+  opacity: 0.9;
+}
+
+.event-tips li:last-child {
+  margin-bottom: 0;
+}
+
+.event-tips li::before {
+  content: '✨';
+  position: absolute;
+  left: -16px;
+  top: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .active-events-header {
+    padding: 12px 16px;
+  }
+  
+  .events-info h3 {
+    font-size: 16px;
+  }
+  
+  .total-multiplier {
+    font-size: 12px;
+  }
+  
+  .active-events-content {
+    padding: 0 16px 16px 16px;
+  }
+  
+  .event-tips {
+    padding: 12px;
+  }
+  
+  .event-tips li {
+    font-size: 12px;
+  }
+}
+
+/* Animation for expanding/collapsing */
+.active-events-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Special styling for different event combinations */
+.active-events.has-weekend-boost {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.active-events.has-global-multiplier {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.active-events.has-exclusive-upgrades {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* Pulsing effect for high multipliers */
+.active-events.high-multiplier {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+}

@@ -1,0 +1,240 @@
+.coin-counter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  border-radius: 15px;
+  box-shadow: 
+    0 4px 15px rgba(255, 215, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  color: #333;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.coin-counter.animating {
+  animation: coinCounterPulse 0.3s ease-out;
+}
+
+.coin-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+.coin-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  animation: coinBounce 2s ease-in-out infinite;
+}
+
+.coin-amount {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  transition: transform 0.1s ease;
+}
+
+.coin-counter.animating .coin-amount {
+  transform: scale(1.1);
+}
+
+.coin-label {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Increase indicator */
+.coin-increase {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+  animation: increaseSlideIn 0.3s ease-out forwards, increaseSlideOut 0.3s ease-in 0.5s forwards;
+  z-index: 3;
+}
+
+.increase-icon {
+  font-size: 0.9em;
+}
+
+.increase-amount {
+  font-family: 'Courier New', monospace;
+}
+
+/* Pulse effect for large increases */
+.coin-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  animation: coinPulseEffect 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes coinCounterPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 20px rgba(255, 215, 0, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes coinBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes increaseSlideIn {
+  0% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes increaseSlideOut {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes coinPulseEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .coin-counter {
+    padding: 15px;
+    min-width: 180px;
+  }
+  
+  .coin-icon {
+    font-size: 1.8rem;
+  }
+  
+  .coin-amount {
+    font-size: 1.6rem;
+  }
+  
+  .coin-label {
+    font-size: 0.9rem;
+  }
+  
+  .coin-increase {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .coin-counter {
+    padding: 12px;
+    min-width: 160px;
+  }
+  
+  .coin-icon {
+    font-size: 1.6rem;
+  }
+  
+  .coin-amount {
+    font-size: 1.4rem;
+  }
+  
+  .coin-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .coin-counter {
+    border: 2px solid #333;
+  }
+  
+  .coin-amount {
+    text-shadow: none;
+    font-weight: 900;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .coin-counter,
+  .coin-amount,
+  .coin-icon,
+  .coin-increase,
+  .coin-pulse {
+    animation: none;
+    transition: none;
+  }
+  
+  .coin-counter.animating .coin-amount {
+    transform: none;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .coin-counter {
+    box-shadow: 
+      0 4px 15px rgba(255, 215, 0, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+  
+  .coin-amount {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,0 +1,291 @@
+/* Streak Display Styles */
+
+/* Compact Version */
+.streak-display.compact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  min-width: 120px;
+}
+
+.streak-display.compact .streak-icon {
+  font-size: 24px;
+}
+
+.streak-display.compact .streak-info {
+  flex: 1;
+}
+
+.streak-display.compact .current-streak {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.streak-display.compact .streak-label {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.streak-display.compact .streak-multiplier {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Full Version */
+.streak-display.full {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+}
+
+.streak-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.streak-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #ffd700;
+}
+
+.bonus-available-badge {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.streak-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+.current-streak-display {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.streak-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff6b35;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+}
+
+.streak-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.days-text {
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+}
+
+.multiplier-text {
+  font-size: 14px;
+  color: #ffd700;
+  margin-top: 2px;
+}
+
+.next-bonus-info {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.next-bonus-label {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.next-bonus-amount {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 5px;
+}
+
+.next-bonus-time {
+  font-size: 12px;
+}
+
+.available-now {
+  color: #4caf50;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+.time-remaining {
+  color: #ffd700;
+}
+
+/* Mini Progress Bar */
+.streak-progress-mini {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2a2a3e;
+  border: 2px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+  transition: all 0.3s ease;
+  cursor: help;
+}
+
+.progress-dot.completed {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  border-color: #ffd700;
+  color: #1a1a2e;
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Statistics */
+.streak-stats {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .streak-display.full {
+    padding: 20px;
+  }
+  
+  .streak-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .streak-main {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .current-streak-display {
+    justify-content: center;
+  }
+  
+  .next-bonus-info {
+    text-align: center;
+  }
+  
+  .streak-number {
+    font-size: 40px;
+  }
+  
+  .progress-dot {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .streak-display.compact {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  
+  .streak-display.compact .streak-icon {
+    font-size: 20px;
+  }
+  
+  .streak-display.compact .current-streak {
+    font-size: 18px;
+  }
+  
+  .streak-display.full {
+    padding: 15px;
+  }
+  
+  .streak-number {
+    font-size: 36px;
+  }
+  
+  .streak-progress-mini {
+    gap: 6px;
+  }
+  
+  .progress-dot {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+}

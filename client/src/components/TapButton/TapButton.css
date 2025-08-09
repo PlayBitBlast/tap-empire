@@ -1,0 +1,491 @@
+.tap-button-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tap-button {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--tg-theme-button-color, #5288c1), #6ab7ff);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-shadow: 
+    0 8px 25px rgba(82, 136, 193, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  color: var(--tg-theme-button-text-color, #ffffff);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.tap-button:hover:not(.disabled) {
+  transform: scale(1.02);
+  box-shadow: 
+    0 10px 30px rgba(82, 136, 193, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.tap-button.pressed:not(.disabled) {
+  transform: scale(0.95);
+  box-shadow: 
+    0 4px 15px rgba(82, 136, 193, 0.6),
+    inset 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.05s ease;
+}
+
+.tap-button.golden {
+  background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+  background-size: 200% 200%;
+  animation: goldenShimmer 2s ease-in-out infinite;
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 
+    0 8px 25px rgba(255, 215, 0, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.3);
+  position: relative;
+  overflow: visible;
+}
+
+.tap-button.golden::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: goldenAura 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+.tap-button.golden::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: goldenRotate 4s linear infinite;
+  z-index: -1;
+}
+
+.tap-button.golden:hover:not(.disabled) {
+  box-shadow: 
+    0 12px 35px rgba(255, 215, 0, 0.9),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.7),
+    0 0 80px rgba(255, 215, 0, 0.4);
+}
+
+.tap-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: 0 4px 15px rgba(82, 136, 193, 0.2);
+}
+
+.tap-button-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tap-emoji {
+  font-size: 4rem;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.1s ease;
+}
+
+.tap-button.pressed .tap-emoji {
+  transform: scale(0.9);
+}
+
+.tap-text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+}
+
+/* Ripple effect */
+.tap-ripple {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleEffect 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tap-button.golden .tap-ripple {
+  background: rgba(255, 215, 0, 0.8);
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(8);
+    opacity: 0;
+  }
+}
+
+/* Floating coin animations */
+.floating-coin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.floating-coin.golden {
+  color: #ffd700;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.coin-icon {
+  font-size: 1.2em;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.coin-value {
+  font-size: 1em;
+  font-weight: 800;
+}
+
+/* Golden tap shimmer animation */
+@keyframes goldenShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Golden aura pulsing animation */
+@keyframes goldenAura {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Golden rotating effect */
+@keyframes goldenRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .tap-button {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .tap-emoji {
+    font-size: 3.5rem;
+  }
+  
+  .tap-text {
+    font-size: 1.3rem;
+  }
+  
+  .floating-coin {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tap-button {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .tap-emoji {
+    font-size: 3rem;
+  }
+  
+  .tap-text {
+    font-size: 1.2rem;
+  }
+  
+  .floating-coin {
+    font-size: 0.9rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .tap-button {
+    border-width: 2px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tap-button,
+  .tap-emoji,
+  .floating-coin {
+    transition: none;
+    animation: none;
+  }
+  
+  .tap-ripple {
+    animation-duration: 0.3s;
+  }
+  
+  .tap-button.golden {
+    animation: none;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+  }
+}
+
+/* Focus styles for accessibility */
+.tap-button:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+.tap-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .floating-coin {
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.8),
+      0 0 4px rgba(255, 255, 255, 0.2);
+  }
+}/* Mobile-
+specific optimizations */
+.tap-button.mobile {
+  /* Larger touch target for mobile */
+  min-width: 44px;
+  min-height: 44px;
+  
+  /* Better touch response */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  /* Prevent zoom on double tap */
+  -ms-touch-action: manipulation;
+}
+
+.tap-button.mobile:active {
+  /* Immediate visual feedback on touch */
+  transform: scale(0.95);
+  transition: transform 0.05s ease;
+}
+
+/* Performance optimizations for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .tap-button {
+    /* Remove hover effects on touch devices */
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  
+  .tap-button:hover {
+    transform: none;
+    box-shadow: 
+      0 8px 25px rgba(82, 136, 193, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Optimize animations for touch devices */
+  .floating-coin {
+    will-change: transform, opacity;
+  }
+  
+  .tap-ripple {
+    will-change: transform, opacity;
+  }
+}
+
+/* Landscape phone optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .tap-button {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .tap-emoji {
+    font-size: 2.5rem;
+  }
+  
+  .tap-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small screens (older phones) */
+@media (max-width: 320px) {
+  .tap-button {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .tap-emoji {
+    font-size: 2.8rem;
+  }
+  
+  .tap-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* High refresh rate displays */
+@media (min-resolution: 120dpi) {
+  .tap-button.mobile {
+    /* Smoother animations on high refresh rate displays */
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  
+  .floating-coin {
+    /* More frequent animation updates */
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+/* Battery optimization for low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .tap-button.mobile {
+    /* Disable expensive animations */
+    transition: none;
+  }
+  
+  .tap-button.mobile:active {
+    transform: scale(0.98);
+  }
+  
+  .floating-coin {
+    /* Simpler animation */
+    animation: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tap-ripple {
+    display: none;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-contrast: high) {
+  .tap-button {
+    border: 3px solid #ffffff;
+  }
+  
+  .tap-button.golden {
+    border-color: #000000;
+  }
+  
+  .tap-button:focus {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+  }
+}
+
+/* Focus management for keyboard navigation */
+.tap-button:focus-visible {
+  outline: 3px solid var(--tg-theme-link-color, #6ab7ff);
+  outline-offset: 4px;
+}
+
+.tap-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Prevent text selection on rapid tapping */
+.tap-button,
+.tap-button * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* GPU acceleration for better performance */
+.tap-button {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.floating-coin,
+.tap-ripple {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize for different pixel densities */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  .tap-button {
+    /* Sharper borders on high DPI displays */
+    border-width: 1px;
+  }
+}
+
+/* Dark mode specific optimizations */
+@media (prefers-color-scheme: dark) {
+  .tap-button {
+    /* Better contrast in dark mode */
+    box-shadow: 
+      0 8px 25px rgba(82, 136, 193, 0.3),
+      inset 0 2px 4px rgba(255, 255, 255, 0.15);
+  }
+  
+  .floating-coin {
+    /* Better visibility in dark mode */
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 0 8px rgba(255, 255, 255, 0.3);
+  }
+}

@@ -1,0 +1,383 @@
+/* UpgradeItem.css - Styles for individual upgrade items */
+
+.upgrade-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.upgrade-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.upgrade-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.upgrade-item:hover::before {
+  opacity: 1;
+}
+
+.upgrade-item.affordable {
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.upgrade-item.affordable:hover {
+  border-color: rgba(76, 175, 80, 0.5);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+}
+
+.upgrade-item.unaffordable {
+  opacity: 0.7;
+}
+
+/* Category-specific styling */
+.upgrade-item.tapping {
+  border-left: 4px solid #ffd700;
+}
+
+.upgrade-item.automation {
+  border-left: 4px solid #4caf50;
+}
+
+.upgrade-item.special {
+  border-left: 4px solid #e91e63;
+}
+
+.upgrade-item.prestige {
+  border-left: 4px solid #9c27b0;
+}
+
+/* Header */
+.upgrade-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.upgrade-icon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.upgrade-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.upgrade-name {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+.upgrade-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.upgrade-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 60px;
+}
+
+.level-text {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.level-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.level-max {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Details */
+.upgrade-details {
+  margin-bottom: 15px;
+}
+
+.upgrade-effect {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.effect-current,
+.effect-next {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.effect-label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.effect-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.effect-increase {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Progress Bar */
+.upgrade-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: #ccc;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Purchase Section */
+.upgrade-purchase {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.upgrade-cost {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cost-label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cost-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.purchase-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.purchase-btn.can-purchase {
+  background: linear-gradient(45deg, #4caf50, #66bb6a);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.purchase-btn.can-purchase:hover {
+  background: linear-gradient(45deg, #66bb6a, #4caf50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.purchase-btn.cannot-afford {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  cursor: not-allowed;
+}
+
+.purchase-btn.max-level {
+  background: rgba(156, 39, 176, 0.2);
+  color: #9c27b0;
+  border: 1px solid rgba(156, 39, 176, 0.3);
+  cursor: not-allowed;
+}
+
+.purchase-btn.loading {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  cursor: not-allowed;
+  position: relative;
+}
+
+.purchase-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Next Cost Preview */
+.upgrade-next-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.next-cost-label {
+  color: #888;
+}
+
+.next-cost-value {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upgrade-item {
+    padding: 15px;
+  }
+  
+  .upgrade-header {
+    gap: 10px;
+  }
+  
+  .upgrade-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .upgrade-name {
+    font-size: 1.1rem;
+  }
+  
+  .upgrade-description {
+    font-size: 0.8rem;
+  }
+  
+  .upgrade-effect {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .upgrade-purchase {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .purchase-btn {
+    min-width: auto;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upgrade-item {
+    padding: 12px;
+  }
+  
+  .upgrade-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .upgrade-level {
+    align-self: flex-end;
+    flex-direction: row;
+    gap: 5px;
+    align-items: baseline;
+  }
+  
+  .level-text {
+    display: none;
+  }
+  
+  .upgrade-effect {
+    gap: 8px;
+  }
+  
+  .effect-current,
+  .effect-next {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

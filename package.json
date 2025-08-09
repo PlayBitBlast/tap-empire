@@ -1,0 +1,59 @@
+{
+  "name": "tap-empire",
+  "version": "1.0.0",
+  "description": "A highly addictive social clicker game designed as a Telegram Mini App",
+  "main": "server/src/app.js",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm test",
+    "test:server": "cd server && npm test",
+    "test:coverage": "npm run test:client -- --coverage && npm run test:server -- --coverage",
+    "test:unit": "npm run test:client:unit && npm run test:server:unit",
+    "test:integration": "cd server && node src/tests/testRunner.js integration",
+    "test:performance": "cd server && node src/tests/testRunner.js performance",
+    "test:e2e": "cd server && node src/tests/testRunner.js e2e",
+    "test:anticheat": "cd server && node src/tests/testRunner.js anticheat",
+    "test:all": "npm run test:client:all && npm run test:server:all",
+    "test:client:components": "cd client && node src/tests/testRunner.js components",
+    "test:client:services": "cd client && node src/tests/testRunner.js services",
+    "test:client:hooks": "cd client && node src/tests/testRunner.js hooks",
+    "test:client:utils": "cd client && node src/tests/testRunner.js utils",
+    "test:client:unit": "cd client && node src/tests/testRunner.js all",
+    "test:client:all": "cd client && node src/tests/testRunner.js all --coverage",
+    "test:server:unit": "cd server && node src/tests/testRunner.js unit",
+    "test:server:all": "cd server && node src/tests/testRunner.js all --coverage",
+    "db:migrate": "cd server && npm run db:migrate",
+    "db:seed": "cd server && npm run db:seed",
+    "db:migrate:prod": "cd server && npm run db:migrate:prod",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:prod:up": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:prod:down": "docker-compose -f docker-compose.prod.yml down",
+    "docker:prod:build": "docker-compose -f docker-compose.prod.yml build --no-cache",
+    "deploy:prod": "./scripts/deploy.sh production",
+    "rollback:prod": "./scripts/rollback.sh"
+  },
+  "keywords": [
+    "telegram",
+    "mini-app",
+    "clicker-game",
+    "social",
+    "gaming"
+  ],
+  "author": "Tap Empire Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  }
+}

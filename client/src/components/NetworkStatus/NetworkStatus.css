@@ -1,0 +1,54 @@
+/* Network status indicator */
+.network-status {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.network-status.online {
+  background: #4caf50;
+  color: white;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.network-status.offline {
+  background: #f44336;
+  color: white;
+  animation: slideInRight 0.3s ease-out, pulse 2s infinite;
+}
+
+.network-status.reconnecting {
+  background: #ff9800;
+  color: white;
+  animation: slideInRight 0.3s ease-out, pulse 1s infinite;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}

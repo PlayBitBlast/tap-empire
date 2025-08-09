@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: tap-empire-postgres
+    environment:
+      POSTGRES_DB: tap_empire
+      POSTGRES_USER: tap_empire_user
+      POSTGRES_PASSWORD: tap_empire_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./database/seeds:/docker-entrypoint-initdb.d/seeds
+    networks:
+      - tap-empire-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: tap-empire-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - tap-empire-network
+    command: redis-server --appendonly yes
+
+  adminer:
+    image: adminer:latest
+    container_name: tap-empire-adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - tap-empire-network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  tap-empire-network:
+    driver: bridge

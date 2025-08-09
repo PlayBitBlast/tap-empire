@@ -1,0 +1,243 @@
+/* UpgradePanel.css - Styles for the upgrade panel */
+
+.upgrade-panel {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.upgrade-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.upgrade-panel-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.user-currency {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.coins {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Category Filter */
+.upgrade-categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.category-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.category-btn.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.category-icon {
+  font-size: 1.2rem;
+}
+
+.category-name {
+  font-weight: 500;
+}
+
+/* Sort Options */
+.upgrade-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upgrade-sort label {
+  font-weight: 500;
+  color: #ccc;
+}
+
+.sort-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.sort-select option {
+  background: #1a1a2e;
+  color: white;
+}
+
+/* Upgrades List */
+.upgrades-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.upgrades-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.upgrades-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.upgrades-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.upgrades-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.no-upgrades {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.no-upgrades p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Upgrade Statistics */
+.upgrade-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .upgrade-panel {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .upgrade-panel-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .upgrade-panel-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .upgrade-categories {
+    justify-content: center;
+  }
+  
+  .category-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .upgrade-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .upgrade-panel {
+    padding: 10px;
+  }
+  
+  .upgrade-categories {
+    gap: 5px;
+  }
+  
+  .category-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .category-name {
+    display: none;
+  }
+  
+  .upgrades-list {
+    max-height: 400px;
+  }
+}

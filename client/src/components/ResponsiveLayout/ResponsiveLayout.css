@@ -1,0 +1,296 @@
+/* Responsive Layout Component Styles */
+
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(135deg, var(--tg-theme-bg-color, #17212b) 0%, var(--tg-theme-secondary-bg-color, #232e3c) 100%);
+  
+  /* Safe area support for mobile devices */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.layout-navigation {
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Screen size specific styles */
+.screen-mobile .layout-content {
+  padding: 10px;
+}
+
+.screen-tablet .layout-content {
+  padding: 15px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.screen-desktop .layout-content {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Orientation specific styles */
+.orientation-landscape.screen-mobile .layout-content {
+  padding: 8px;
+}
+
+.orientation-landscape.screen-mobile .layout-navigation {
+  /* Compact navigation in mobile landscape */
+  transform: scale(0.9);
+  transform-origin: top center;
+}
+
+/* Keyboard visibility adjustments */
+.keyboard-visible .layout-content {
+  padding-bottom: 5px;
+}
+
+.keyboard-visible .layout-navigation {
+  /* Hide or minimize navigation when keyboard is visible */
+  transform: translateY(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Loading overlay */
+.layout-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.loading-content {
+  text-align: center;
+  color: var(--tg-theme-text-color, #ffffff);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid var(--tg-theme-button-color, #5288c1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message {
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Safe area debug indicators (development only) */
+.safe-area-debug {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.safe-area-indicator {
+  position: absolute;
+  background: rgba(255, 0, 0, 0.3);
+  opacity: 0.5;
+}
+
+.safe-area-indicator.top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top);
+}
+
+.safe-area-indicator.bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-bottom);
+}
+
+.safe-area-indicator.left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: env(safe-area-inset-left);
+}
+
+.safe-area-indicator.right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: env(safe-area-inset-right);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 480px) {
+  .responsive-layout {
+    font-size: 14px;
+  }
+  
+  .screen-mobile .layout-content {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .responsive-layout {
+    font-size: 13px;
+  }
+  
+  .screen-mobile .layout-content {
+    padding: 5px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .loading-spinner {
+    border-width: 2px;
+  }
+  
+  .safe-area-indicator {
+    border: 1px solid rgba(255, 0, 0, 0.5);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .layout-content {
+    scroll-behavior: auto;
+  }
+  
+  .loading-spinner {
+    animation: none;
+    border-top-color: transparent;
+  }
+  
+  .keyboard-visible .layout-navigation {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .responsive-layout {
+    background: white;
+    color: black;
+    padding: 0;
+  }
+  
+  .layout-navigation,
+  .layout-loading-overlay,
+  .safe-area-debug {
+    display: none;
+  }
+  
+  .layout-content {
+    padding: 20px;
+    max-width: none;
+  }
+}
+
+/* Focus management */
+.responsive-layout:focus-within .layout-content {
+  /* Ensure content is visible when focused */
+  z-index: 1;
+}
+
+/* Accessibility improvements */
+@media (prefers-contrast: high) {
+  .layout-loading-overlay {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  
+  .loading-spinner {
+    border-color: #ffffff;
+    border-top-color: var(--tg-theme-button-color, #5288c1);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .responsive-layout {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  }
+}
+
+/* Landscape phone optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  .responsive-layout {
+    font-size: 13px;
+  }
+  
+  .layout-content {
+    padding: 5px 10px;
+  }
+  
+  .layout-navigation {
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 280px) {
+  .responsive-layout {
+    font-size: 12px;
+  }
+  
+  .layout-content {
+    padding: 3px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .screen-desktop .layout-content {
+    max-width: 1400px;
+    padding: 30px;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1600px) {
+  .screen-desktop .layout-content {
+    max-width: 1600px;
+    padding: 40px;
+  }
+}

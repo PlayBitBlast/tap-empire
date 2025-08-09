@@ -1,0 +1,375 @@
+/* PrestigePanel.css - Styles for the main prestige panel */
+
+.prestige-panel {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prestige-panel.loading,
+.prestige-panel.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+.loading-spinner .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  text-align: center;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.error-message h3 {
+  color: #ff6b6b;
+  margin: 0 0 12px 0;
+}
+
+.retry-button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 16px;
+  transition: background-color 0.2s;
+}
+
+.retry-button:hover {
+  background: #ff5252;
+}
+
+/* Header */
+.prestige-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prestige-title h2 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prestige-level {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.level-label {
+  color: #b0b0b0;
+}
+
+.level-value {
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 18px;
+}
+
+.level-name {
+  color: #d0d0d0;
+  font-style: italic;
+}
+
+.prestige-points {
+  text-align: right;
+}
+
+.points-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.points-icon {
+  font-size: 20px;
+}
+
+.points-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.points-label {
+  font-size: 12px;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tabs */
+.prestige-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.prestige-tabs .tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #b0b0b0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.prestige-tabs .tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.prestige-tabs .tab.active {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #1a1a2e;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Content */
+.prestige-content {
+  min-height: 400px;
+}
+
+.prestige-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prestige-benefits {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prestige-benefits h3 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 18px;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.benefit-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.benefit-text {
+  color: #d0d0d0;
+  line-height: 1.4;
+}
+
+/* Confirm Dialog */
+.prestige-confirm-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.5);
+}
+
+.dialog-content h3 {
+  margin: 0 0 20px 0;
+  color: #ffd700;
+  font-size: 24px;
+  text-align: center;
+}
+
+.confirm-details {
+  margin-bottom: 24px;
+}
+
+.confirm-details p {
+  margin: 0 0 16px 0;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+.confirm-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.confirm-details li {
+  padding: 8px 0;
+  color: #b0b0b0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.confirm-details li:last-child {
+  border-bottom: none;
+}
+
+.warning {
+  color: #ff6b6b !important;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.cancel-button,
+.confirm-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancel-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.confirm-button {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #1a1a2e;
+}
+
+.confirm-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+}
+
+.confirm-button:disabled,
+.cancel-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .prestige-panel {
+    padding: 16px;
+    margin: 16px;
+  }
+  
+  .prestige-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .prestige-title h2 {
+    font-size: 24px;
+  }
+  
+  .prestige-tabs {
+    flex-direction: column;
+  }
+  
+  .dialog-content {
+    padding: 24px;
+    margin: 16px;
+  }
+  
+  .dialog-actions {
+    flex-direction: column;
+  }
+}

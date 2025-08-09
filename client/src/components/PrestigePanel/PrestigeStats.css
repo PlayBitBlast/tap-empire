@@ -1,0 +1,318 @@
+/* PrestigeStats.css - Styles for prestige statistics component */
+
+.prestige-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.prestige-stats.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.loading-message {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
+/* Header */
+.stats-header h3 {
+  margin: 0;
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card.primary {
+  border-color: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.stat-card.secondary {
+  border-color: rgba(138, 43, 226, 0.3);
+  background: rgba(138, 43, 226, 0.05);
+}
+
+.stat-card.accent {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.stat-card.info {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #b0b0b0;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-subtitle {
+  font-size: 12px;
+  color: #888888;
+  font-style: italic;
+}
+
+/* Detailed Stats */
+.detailed-stats {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.detailed-stats h4 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-name {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.stat-row .stat-value {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.stat-row .stat-value.positive {
+  color: #4ade80;
+}
+
+.stat-row .stat-value.negative {
+  color: #f87171;
+}
+
+/* Prestige Milestones */
+.prestige-milestones {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.prestige-milestones h4 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.milestones-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.milestone-item.achieved {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.milestone-item.locked {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.6;
+}
+
+.milestone-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.milestone-content {
+  flex: 1;
+}
+
+.milestone-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.milestone-reward {
+  color: #b0b0b0;
+  font-size: 12px;
+}
+
+.milestone-item.achieved .milestone-title {
+  color: #4ade80;
+}
+
+.milestone-item.achieved .milestone-reward {
+  color: #86efac;
+}
+
+/* Prestige Tips */
+.prestige-tips {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.prestige-tips h4 {
+  margin: 0 0 16px 0;
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.tip-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.tip-text {
+  color: #d0d0d0;
+  font-size: 14px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 16px;
+  }
+  
+  .stat-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .milestones-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .detailed-stats,
+  .prestige-milestones,
+  .prestige-tips {
+    padding: 16px;
+  }
+  
+  .stat-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+/* Animation for stat cards */
+@keyframes statPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+.stat-card.primary:hover {
+  animation: statPulse 1.5s ease-in-out;
+}
